@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MÉTODO WILLIS</title>
+    <meta name="author" content="Alberto and Luisina">
+    <link rel="icon" type="image/png" href="./icon.png" /><!--icon designed by Freepik (http://www.freepik.com) from Flaticon-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        background-image: linear-gradient(to right, rgb(153, 255, 153),rgb(255, 255, 153));
+        text-align: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    .divLabel {
+        text-align: right;
+        padding-right: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        color: gray;
+    }
+</style>
+<body onload="aDespejar()">
+        
+        <div class="container">
+            <div class="row justify-content-center mt-3">
+                <div>
+                    <h1 class="display-1">MÉTODO DE WILLIS</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-2 divLabel">
+                    <label for="selectAdespejar">DESPEJAR:</label>
+                </div>
+                <div class="col-6">
+                    <select name="" id="selectAdespejar" class="form-control" onchange="aDespejar()">
+                        <option value="n1">n1</option>
+                        <option value="n2">n2</option>
+                        <option value="n3">n3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="col-2 divLabel">
+                    <label for="inputn2">n2:</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" id="inputn2" class="form-control">
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="col-2 divLabel">
+                    <label for="inputn1">n1:</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" id="inputn1" class="form-control">
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="col-2 divLabel">
+                    <label for="inputn3">n3:</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" id="inputn3" class="form-control">
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="col-2 divLabel">
+                    <label for="inputz1">Z1:</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" id="inputz1" class="form-control">
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="col-2 divLabel">
+                    <label for="inputz3">Z3:</label>
+                </div>
+                <div class="col-6">
+                    <input type="text" id="inputz3" class="form-control">
+                </div>
+            </div>
+            <div class="row justify-content-center mt-5">
+                <div class="col-4">
+                    <button class="btn btn-warning btn-block btn-lg" onclick="methodWillis()">RESOLVER</button>
+                </div>
+            </div>
+        </div>
+
+    <script>
+
+        function methodWillis() {
+
+            let n2 = document.getElementById('inputn2');
+            let n1 = document.getElementById('inputn1');
+            let n3 = document.getElementById('inputn3');
+            let z1 = document.getElementById('inputz1');
+            let z3 = document.getElementById('inputz3');
+
+            let selected = document.getElementById('selectAdespejar').value;
+
+            let n2Num = Number(n2.value);
+            let n1Num = Number(n1.value);
+            let n3Num = Number(n3.value);
+            let z1Num = Number(z1.value);
+            let z3Num = Number(z3.value);
+
+
+            switch (selected) {
+
+                case 'n1':
+
+                   if (n2Num === 0) {
+                        n1Num = n3Num * z3Num / z1Num
+                   } else {
+                        n1Num = (n2Num * (z1Num + z3Num)) / (z1Num + (n3Num * z3Num)); 
+                   }
+
+                    n1.value = n1Num.toFixed(3);
+
+                break;
+                case 'n2':
+
+                    if (n1Num === 0) {
+                        n2Num = (n3Num * z3Num) / (z1Num + z3Num);
+                    } else {
+                        n2Num = ((n1Num * z1Num) + (n3Num * z3Num)) / (z1Num + z3Num);
+                    }
+
+                    n2.value = n2Num.toFixed(3);
+
+                break;
+                case 'n3':
+
+                    if (n2Num === 0) {
+                        n3Num = n1Num * z1Num / z3Num;
+                    } else {
+                        n3Num = (z1Num + z3Num) / z3Num;
+                    }
+
+                    n3.value = n3Num.toFixed(3);
+
+                break;
+
+            }
+
+        }
+
+        function aDespejar() {
+
+            let n2 = document.getElementById('inputn2');
+            let n1 = document.getElementById('inputn1');
+            let n3 = document.getElementById('inputn3');
+
+            let selected = document.getElementById('selectAdespejar').value;
+
+            switch (selected) {
+
+                case 'n1':
+                    n1.setAttribute('readOnly', true);
+                    n2.removeAttribute('readOnly');
+                    n3.removeAttribute('readOnly');
+                break;
+                case 'n2':
+                    n2.setAttribute('readOnly', true);
+                    n1.removeAttribute('readOnly');
+                    n3.removeAttribute('readOnly');
+                break;
+                case 'n3':
+                    n3.setAttribute('readOnly', true);
+                    n1.removeAttribute('readOnly');
+                    n2.removeAttribute('readOnly');
+                break;
+
+            }
+
+        }
+
+    </script>
+</body>
+</html>
