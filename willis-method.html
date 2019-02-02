@@ -31,20 +31,27 @@
         font-weight: bold;
         color: gray;
     }
+
+    @media screen and (max-width: 540px) {
+        .divLabel {
+        text-align: center;
+        padding-right: 15px;
+    }
+    }
 </style>
 <body onload="aDespejar()">
         
         <div class="container">
             <div class="row justify-content-center mt-3">
                 <div>
-                    <h1 class="display-1">MÉTODO DE WILLIS</h1>
+                    <h1 class="display-3">MÉTODO DE WILLIS</h1>
                 </div>
             </div>
             <div class="row justify-content-center mt-5">
-                <div class="col-2 divLabel">
-                    <label for="selectAdespejar">DESPEJAR:</label>
+                <div class="col-lg-2 col-sm-3 divLabel">
+                    <label for="selectAdespejar">DESPEJAR</label>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6">
                     <select name="" id="selectAdespejar" class="form-control" onchange="aDespejar()">
                         <option value="n1">n1</option>
                         <option value="n2">n2</option>
@@ -53,47 +60,47 @@
                 </div>
             </div>
             <div class="row justify-content-center mt-3">
-                <div class="col-2 divLabel">
-                    <label for="inputn2">n2:</label>
+                <div class="col-lg-2 col-sm-3 divLabel">
+                    <label for="inputn2">n2</label>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6">
                     <input type="text" id="inputn2" class="form-control">
                 </div>
             </div>
             <div class="row justify-content-center mt-3">
-                <div class="col-2 divLabel">
-                    <label for="inputn1">n1:</label>
+                <div class="col-lg-2 col-sm-3 divLabel">
+                    <label for="inputn1">n1</label>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6">
                     <input type="text" id="inputn1" class="form-control">
                 </div>
             </div>
             <div class="row justify-content-center mt-3">
-                <div class="col-2 divLabel">
-                    <label for="inputn3">n3:</label>
+                <div class="col-lg-2 col-sm-3 divLabel">
+                    <label for="inputn3">n3</label>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6">
                     <input type="text" id="inputn3" class="form-control">
                 </div>
             </div>
             <div class="row justify-content-center mt-3">
-                <div class="col-2 divLabel">
-                    <label for="inputz1">Z1:</label>
+                <div class="col-lg-2 col-sm-3 divLabel">
+                    <label for="inputz1">Z1</label>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6">
                     <input type="text" id="inputz1" class="form-control">
                 </div>
             </div>
             <div class="row justify-content-center mt-3">
-                <div class="col-2 divLabel">
-                    <label for="inputz3">Z3:</label>
+                <div class="col-lg-2 col-sm-3 divLabel">
+                    <label for="inputz3">Z3</label>
                 </div>
-                <div class="col-6">
+                <div class="col-lg-6">
                     <input type="text" id="inputz3" class="form-control">
                 </div>
             </div>
             <div class="row justify-content-center mt-5">
-                <div class="col-4">
+                <div class="col-lg-4 col-sm-6">
                     <button class="btn btn-warning btn-block btn-lg" onclick="methodWillis()">RESOLVER</button>
                 </div>
             </div>
